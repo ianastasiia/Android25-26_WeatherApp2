@@ -14,7 +14,8 @@ android {
 
     defaultConfig {
         minSdk = 30
-
+        buildConfigField("String", "BASE_URL", "\"http://api.weatherapi.com/v1\"")
+        buildConfigField("String", "WEATHER_API_KEY", "\"7952b9fdafaf4fb39f2100308260401\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -34,6 +35,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }
 
