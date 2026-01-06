@@ -13,7 +13,7 @@ data class CurrentWeatherDto(
 data class LocationDto(
     val name: String,
     val country: String,
-    val lan: Double,
+    val lat: Double,
     val lon: Double,
 )
 

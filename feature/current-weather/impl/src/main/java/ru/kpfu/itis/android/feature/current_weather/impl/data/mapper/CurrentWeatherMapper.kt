@@ -10,5 +10,7 @@ object CurrentWeatherMapper {
             cityName = dto.location.name,
             temperatureInCelsius = dto.current.tempC.toInt(),
             description = dto.current.condition.text,
+            latitude = dto.location.lat,
+            longitude = dto.location.lon,
         )
 }

@@ -1,8 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.hilt.plugin)
     alias(libs.plugins.detekt)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -50,6 +52,11 @@ detekt {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":feature:current-weather:impl"))
+    implementation(project(":feature:search-city:api"))
+    implementation(project(":feature:search-city:impl"))
+    implementation(project(":feature:saved-cities:impl"))
+    implementation(project(":feature:forecast:impl"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -58,6 +65,16 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+
+    //    hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+
+    //    navigation 3
+    implementation(libs.navigation3.runtime)
+    implementation(libs.navigation3.ui)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

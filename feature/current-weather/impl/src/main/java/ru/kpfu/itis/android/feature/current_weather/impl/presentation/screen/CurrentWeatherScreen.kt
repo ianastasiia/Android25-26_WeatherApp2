@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -27,16 +28,16 @@ import ru.kpfu.itis.android.feature.current_weather.impl.presentation.viewmodel.
 
 @Composable
 fun CurrentWeatherScreen(
-    viewModel: CurrentWeatherViewModel = hiltViewModel()
+    city: String,
+    viewModel: CurrentWeatherViewModel = hiltViewModel(),
+    onForecastClick: () -> Unit,
 ) {
     val state by viewModel.state.collectAsState()
     val snackBarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(Unit) {
+    LaunchedEffect(city) {
         viewModel.sendIntent(
-            CurrentWeatherIntent.Load(
-                query = "Kazan"
-            )
+            CurrentWeatherIntent.Load(query = city)
         )
     }
 
@@ -49,7 +50,6 @@ fun CurrentWeatherScreen(
                     )
                 }
             }
-
         }
     }
 
@@ -82,7 +82,23 @@ fun CurrentWeatherScreen(
                             style = MaterialTheme.typography.headlineLarge
                         )
                         Spacer(modifier = Modifier.height(4.dp))
-                        Text(text = state.weather!!.description)
+                        Text(
+                            text = state.weather!!.description,
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Button(onClick = onForecastClick) {
+                            Text("View forecast")
+                        }
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Button(
+                            onClick = {
+                                viewModel.sendIntent(CurrentWeatherIntent.SaveCity)
+                            }
+                        ) {
+                            Text("Add to favorites")
+                        }
+
                     }
                 }
 
