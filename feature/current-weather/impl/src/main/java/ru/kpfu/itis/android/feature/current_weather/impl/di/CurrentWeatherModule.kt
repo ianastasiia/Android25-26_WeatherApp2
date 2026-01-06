@@ -27,7 +27,6 @@ object CurrentWeatherModule {
         CurrentWeatherRepositoryImpl(api)
 
     @Provides
-    @Singleton
     fun provideCurrentWeatherUseCase(repository: CurrentWeatherRepository): GetCurrentWeatherUseCase =
         GetCurrentWeatherUseCase(repository)
 }
