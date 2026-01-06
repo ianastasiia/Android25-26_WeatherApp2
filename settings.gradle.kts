@@ -21,4 +21,12 @@ dependencyResolutionManagement {
 
 rootProject.name = "Android(25-26 Weather App"
 include(":app")
- 
+include(":core")
+include(":feature:current-weather:api")
+include(":feature:current-weather:impl")
+include(":feature:search-city:api")
+include(":feature:search-city:impl")
+include(":feature:saved-cities:api")
+include(":feature:saved-cities:impl")
+include(":feature:forecast:api")
+include(":feature:forecast:impl")
