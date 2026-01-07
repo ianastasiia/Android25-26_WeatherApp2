@@ -2,7 +2,7 @@ name: CI/CD for Weather App
 
 on:
   pull_request:
-    branches: [ main, develop ]
+    branches: [ master, main, develop ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
