@@ -27,14 +27,4 @@ object AnalyticsModule {
     fun provideAnalyticsTracker(
         impl: FirebaseAnalyticsTracker
     ): AnalyticsTracker = impl
-//
-//    @Provides
-//    @Singleton
-//    fun provideFirebaseCrashlytics(): FirebaseCrashlytics =
-//        FirebaseCrashlytics.getInstance()
-//
-//    @Provides
-//    @Singleton
-//    fun provideFirebasePerformance(): FirebasePerformance =
-//        FirebasePerformance.getInstance()
 }
