@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>FunctionNaming:AppNavHost.kt$@Composable fun AppNavHost()</ID>
+    <ID>NewLineAtEndOfFile:AnalyticsModule.kt$ru.kpfu.itis.android.android25_26weatherapp.di.AnalyticsModule.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleUnitTest.kt$ru.kpfu.itis.android.android25_26weatherapp.ExampleUnitTest.kt</ID>
+    <ID>NewLineAtEndOfFile:FirebaseAnalyticsTracker.kt$ru.kpfu.itis.android.android25_26weatherapp.analytics.FirebaseAnalyticsTracker.kt</ID>
+    <ID>NewLineAtEndOfFile:MainActivity.kt$ru.kpfu.itis.android.android25_26weatherapp.MainActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:WeatherApp.kt$ru.kpfu.itis.android.android25_26weatherapp.WeatherApp.kt</ID>
+    <ID>PackageNaming:AnalyticsModule.kt$package ru.kpfu.itis.android.android25_26weatherapp.di</ID>
+    <ID>PackageNaming:AppNavHost.kt$package ru.kpfu.itis.android.android25_26weatherapp.navigation</ID>
+    <ID>PackageNaming:ExampleUnitTest.kt$package ru.kpfu.itis.android.android25_26weatherapp</ID>
+    <ID>PackageNaming:FirebaseAnalyticsTracker.kt$package ru.kpfu.itis.android.android25_26weatherapp.analytics</ID>
+    <ID>PackageNaming:MainActivity.kt$package ru.kpfu.itis.android.android25_26weatherapp</ID>
+    <ID>PackageNaming:Screen.kt$package ru.kpfu.itis.android.android25_26weatherapp.navigation</ID>
+    <ID>PackageNaming:WeatherApp.kt$package ru.kpfu.itis.android.android25_26weatherapp</ID>
+    <ID>WildcardImport:ExampleUnitTest.kt$import org.junit.Assert.*</ID>
+  </CurrentIssues>
+</SmellBaseline>
