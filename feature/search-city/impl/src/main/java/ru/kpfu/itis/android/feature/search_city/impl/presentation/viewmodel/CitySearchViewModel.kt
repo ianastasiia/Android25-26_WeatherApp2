@@ -5,6 +5,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import ru.kpfu.itis.android.core.analytics.AnalyticsTracker
 import ru.kpfu.itis.android.core.mvi.MviViewModel
 import ru.kpfu.itis.android.core.network.model.ApiResult
 import ru.kpfu.itis.android.feature.search_city.api.domain.usecase.SearchCityUseCase
@@ -16,12 +17,17 @@ import kotlin.coroutines.cancellation.CancellationException
 
 @HiltViewModel
 class CitySearchViewModel @Inject constructor(
-    private val citySearchCityUseCase: SearchCityUseCase
+    private val citySearchCityUseCase: SearchCityUseCase,
+    analyticsTracker: AnalyticsTracker,
 ) : MviViewModel<CitySearchIntent, CitySearchState, CitySearchEffect>(
     initialState = CitySearchState()
 ) {
     private var searchJob: Job? = null
     private var lastSearchId = 0
+
+    init {
+        analyticsTracker.trackScreen("city_search_weather")
+    }
 
     override fun handleIntent(intent: CitySearchIntent) {
         when (intent) {

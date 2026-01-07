@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import ru.kpfu.itis.android.core.analytics.AnalyticsTracker
 import ru.kpfu.itis.android.core.mvi.MviViewModel
 import ru.kpfu.itis.android.feature.saved_cities.api.domain.model.SavedCity
 import ru.kpfu.itis.android.feature.saved_cities.api.domain.usecase.DeleteCityUseCase
@@ -18,9 +19,14 @@ import javax.inject.Inject
 class SavedCitiesViewModel @Inject constructor(
     private val observeSavedCities: GetSavedCitiesUseCase,
     private val saveCity: SaveCityUseCase,
-    private val deleteCity: DeleteCityUseCase
+    private val deleteCity: DeleteCityUseCase,
+    analyticsTracker: AnalyticsTracker,
 ) : MviViewModel<SavedCitiesIntent, SavedCitiesState, SavedCitiesEffect
         >(initialState = SavedCitiesState()) {
+
+    init {
+        analyticsTracker.trackScreen("save_city")
+    }
 
     override fun handleIntent(intent: SavedCitiesIntent) {
         when (intent) {

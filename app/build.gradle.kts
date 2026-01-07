@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.hilt.plugin)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.crashlytics)
+    alias(libs.plugins.performance)
     alias(libs.plugins.detekt)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
@@ -74,6 +77,12 @@ dependencies {
     //    navigation 3
     implementation(libs.navigation3.runtime)
     implementation(libs.navigation3.ui)
+
+    //    firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.performance)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -3,6 +3,7 @@ package ru.kpfu.itis.android.feature.current_weather.impl.presentation.viewmodel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import ru.kpfu.itis.android.core.analytics.AnalyticsTracker
 import ru.kpfu.itis.android.core.database.entity.CityEntity
 import ru.kpfu.itis.android.core.domain.usecase.SaveCityUseCase
 import ru.kpfu.itis.android.core.mvi.MviViewModel
@@ -16,8 +17,8 @@ import javax.inject.Inject
 @HiltViewModel
 class CurrentWeatherViewModel @Inject constructor(
     private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase,
-    private val saveCityUseCase: SaveCityUseCase
-//    private val analytics: FirebaseAnalytics
+    private val saveCityUseCase: SaveCityUseCase,
+    private val analyticsTracker: AnalyticsTracker,
 ) : MviViewModel<
         CurrentWeatherIntent,
         CurrentWeatherState,
@@ -25,6 +26,10 @@ class CurrentWeatherViewModel @Inject constructor(
         >(
     initialState = CurrentWeatherState()
 ) {
+    init {
+        analyticsTracker.trackScreen("current_weather")
+    }
+
     override fun handleIntent(intent: CurrentWeatherIntent) {
         when (intent) {
             is CurrentWeatherIntent.Load -> loadWeather(intent.query)
@@ -35,10 +40,6 @@ class CurrentWeatherViewModel @Inject constructor(
 
     private fun loadWeather(query: String) {
         viewModelScope.launch {
-//            firebaseAnalytics.logEvent(
-//                "current_weather_screen_opened",
-//                null
-//            )
 
             setState {
                 copy(

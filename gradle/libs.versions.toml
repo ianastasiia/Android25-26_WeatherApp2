@@ -33,6 +33,12 @@ material = "1.13.0"
 coil = "3.3.0"
 
 #firebase
+googleServices = "4.4.4"
+firebaseBom = "34.7.0"
+crashlytics = "3.0.6"
+perfPlugin = "2.0.2"
+firebasePerf = "22.0.4"
+firebaseCrashlytics = "20.0.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -76,10 +82,16 @@ retrofit-kotlinx-serialization-converter = { group = "com.jakewharton.retrofit",
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 
 #firebase
-
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlytics"}
+firebase-performance = { group = "com.google.firebase", name = "firebase-perf", version.ref = "firebasePerf"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlytics" }
+performance = { id = "com.google.firebase.firebase-perf", version.ref = "perfPlugin" }
 hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
