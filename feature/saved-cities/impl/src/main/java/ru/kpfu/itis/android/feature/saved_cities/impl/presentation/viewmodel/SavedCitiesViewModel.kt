@@ -6,7 +6,6 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import ru.kpfu.itis.android.core.analytics.AnalyticsTracker
 import ru.kpfu.itis.android.core.mvi.MviViewModel
-import ru.kpfu.itis.android.feature.saved_cities.api.domain.model.SavedCity
 import ru.kpfu.itis.android.feature.saved_cities.api.domain.usecase.DeleteCityUseCase
 import ru.kpfu.itis.android.feature.saved_cities.api.domain.usecase.GetSavedCitiesUseCase
 import ru.kpfu.itis.android.feature.saved_cities.api.domain.usecase.SaveCityUseCase
@@ -32,7 +31,7 @@ class SavedCitiesViewModel @Inject constructor(
         when (intent) {
             is SavedCitiesIntent.Load -> observe()
             is SavedCitiesIntent.Delete -> delete(intent.cityName)
-            is SavedCitiesIntent.Add -> add(intent.city)
+            is SavedCitiesIntent.OpenCity -> openCity(intent.cityName)
         }
     }
 
@@ -55,9 +54,9 @@ class SavedCitiesViewModel @Inject constructor(
         }
     }
 
-    private fun add(city: SavedCity) {
+    private fun openCity(cityName: String) {
         viewModelScope.launch {
-            saveCity(city)
+            sendEffect(SavedCitiesEffect.OpenCity(cityName))
         }
     }
 }
