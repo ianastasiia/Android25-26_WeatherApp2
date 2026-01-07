@@ -24,6 +24,9 @@ jobs:
           distribution: 'temurin'
           java-version: 17
           cache: 'gradle'
+      - name: Restore google-services.json
+        run: |
+          echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > app/google-services.json    
 
       - name: Grant execute permission for Gradle
         run: chmod +x gradlew
@@ -47,6 +50,10 @@ jobs:
           distribution: 'temurin'
           java-version: 17
           cache: 'gradle'
+
+      - name: Restore google-services.json
+        run: |
+          echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > app/google-services.json
 
       - name: Grant execute permission for Gradle
         run: chmod +x gradlew
@@ -79,6 +86,9 @@ jobs:
           distribution: 'temurin'
           java-version: 17
           cache: 'gradle'
+      - name: Restore google-services.json
+        run: |
+          echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > app/google-services.json
 
       - name: Grant execute permission for Gradle
         run: chmod +x gradlew
