@@ -3,7 +3,7 @@ package ru.kpfu.itis.android.feature.search_city.impl.data.remote
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CitySearchResponseDto(
+data class CitySearchDto(
     val id: Int? = null,
     val name: String,
     val region: String? = null,

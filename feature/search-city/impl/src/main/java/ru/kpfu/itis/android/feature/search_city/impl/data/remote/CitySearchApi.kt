@@ -8,5 +8,5 @@ interface CitySearchApi {
     @GET("search.json")
     suspend fun search(
         @Query("q") query: String
-    ): List<CitySearchResponseDto>
+    ): List<CitySearchDto>
 }
