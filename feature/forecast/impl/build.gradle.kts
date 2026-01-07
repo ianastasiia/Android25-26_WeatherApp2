@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.hilt.plugin)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
 }
 
@@ -47,6 +48,7 @@ dependencies {
     //    retrofit + kotlin-serialization
     implementation(libs.retrofit)
     implementation(libs.retrofit.kotlinx.serialization.converter)
+    implementation(libs.kotlinx.serialization.json)
 
     //    hilt
     implementation(libs.hilt.android)
@@ -63,7 +65,4 @@ dependencies {
     //    coil
     implementation(libs.coil.compose)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }

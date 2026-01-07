@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         minSdk = 30
-        buildConfigField("String", "BASE_URL", "\"http://api.weatherapi.com/v1\"")
+        buildConfigField("String", "BASE_URL", "\"https://api.weatherapi.com/v1/\"")
         buildConfigField("String", "WEATHER_API_KEY", "\"7952b9fdafaf4fb39f2100308260401\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -46,7 +46,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.material)
-    testImplementation(libs.junit)
 
 //    retrofit + okhttp + kotlin-serialization
     implementation(libs.retrofit)
@@ -63,7 +62,4 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
-
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }

@@ -5,8 +5,8 @@ import retrofit2.http.Query
 
 interface CitySearchApi {
 
-    @GET("current.json")
+    @GET("search.json")
     suspend fun search(
         @Query("q") query: String
-    ): List<CityDto>
+    ): List<CitySearchDto>
 }

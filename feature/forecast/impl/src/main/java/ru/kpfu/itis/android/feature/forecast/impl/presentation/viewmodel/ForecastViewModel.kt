@@ -3,6 +3,7 @@ package ru.kpfu.itis.android.feature.forecast.impl.presentation.viewmodel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import ru.kpfu.itis.android.core.analytics.AnalyticsTracker
 import ru.kpfu.itis.android.core.mvi.MviViewModel
 import ru.kpfu.itis.android.core.network.model.ApiResult
 import ru.kpfu.itis.android.feature.forecast.api.domain.usecase.GetForecastUseCase
@@ -13,12 +14,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ForecastViewModel @Inject constructor(
-    private val getForecast: GetForecastUseCase
+    private val getForecast: GetForecastUseCase,
+    analyticsTracker: AnalyticsTracker,
 ) : MviViewModel<
         ForecastIntent,
         ForecastState,
         ForecastEffect
         >(initialState = ForecastState()) {
+
+    init {
+        analyticsTracker.trackScreen("forecast_weather")
+    }
 
     override fun handleIntent(intent: ForecastIntent) {
         when (intent) {
@@ -31,11 +37,13 @@ class ForecastViewModel @Inject constructor(
             setState { copy(isLoading = true) }
 
             when (val result = getForecast(query)) {
-                is ApiResult.Success -> setState {
-                    copy(
-                        isLoading = false,
-                        days = result.data
-                    )
+                is ApiResult.Success -> {
+                    setState {
+                        copy(
+                            isLoading = false,
+                            days = result.data
+                        )
+                    }
                 }
 
                 is ApiResult.Failure -> {

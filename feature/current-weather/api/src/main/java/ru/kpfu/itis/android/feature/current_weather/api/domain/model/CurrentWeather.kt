@@ -4,4 +4,6 @@ data class CurrentWeather(
     val cityName: String,
     val temperatureInCelsius: Int,
     val description: String,
+    val latitude: Double,
+    val longitude: Double,
 )

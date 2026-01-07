@@ -10,7 +10,7 @@ class ApiKeyInterceptor(
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
 
-        val newUrl = originalRequest.url.newBuilder().addQueryParameter("appId", apiKey).build()
+        val newUrl = originalRequest.url.newBuilder().addQueryParameter("key", apiKey).build()
 
         val newRequest = originalRequest.newBuilder().url(newUrl).build()
 

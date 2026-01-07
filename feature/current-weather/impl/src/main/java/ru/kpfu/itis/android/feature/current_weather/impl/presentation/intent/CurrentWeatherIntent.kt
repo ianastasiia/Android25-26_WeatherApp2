@@ -6,4 +6,6 @@ sealed interface CurrentWeatherIntent : UiIntent {
 
     data class Load(val query: String) : CurrentWeatherIntent
 
+    data object SaveCity : CurrentWeatherIntent
+
 }
