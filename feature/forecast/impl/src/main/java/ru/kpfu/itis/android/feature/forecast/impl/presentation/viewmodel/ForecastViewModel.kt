@@ -37,11 +37,13 @@ class ForecastViewModel @Inject constructor(
             setState { copy(isLoading = true) }
 
             when (val result = getForecast(query)) {
-                is ApiResult.Success -> setState {
-                    copy(
-                        isLoading = false,
-                        days = result.data
-                    )
+                is ApiResult.Success -> {
+                    setState {
+                        copy(
+                            isLoading = false,
+                            days = result.data
+                        )
+                    }
                 }
 
                 is ApiResult.Failure -> {
